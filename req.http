@@ -1,0 +1,452 @@
+@localBaseURL = http://localhost:3000
+@hostBaseURL =  https://my-booking-hotel.herokuapp.com
+
+# @name registerUser
+# @note
+# Email and phone number require unique
+POST {{hostBaseURL}}/register
+Content-Type: application/json
+
+{
+    "user_name": "user",
+    "user_email": "user@gmail.com",
+    "user_password": "123456",
+    "confirm_password": "123456",
+    "user_phone": "0981182713"
+}
+
+###
+
+# @name login
+POST {{hostBaseURL}}/login
+Content-Type: application/json
+
+{
+    "user_email": "owner@gmail.com",
+    "user_password": "123456"
+}
+
+### Login
+POST {{localBaseURL}}/login
+Content-Type: application/json
+
+{
+    "user_email": "huyson205@gmail.com",
+    "user_password": "asdasd"
+}
+
+
+###
+
+# @name refreshToken
+POST {{localBaseURL}}/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI2YWFiZDc4NS00YWRlLTRiMjgtODhjZC1kNThjM2FlODYxOTkiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzODM0MzM0OSwiZXhwIjoxNjM4OTQ4MTQ5fQ.qsktSTunXzskTeR0qqIE-ZNy8ZgQyT_MwGNpPlUIstQ"
+}
+
+### Login
+POST {{localBaseURL}}/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI2YWFiZDc4NS00YWRlLTRiMjgtODhjZC1kNThjM2FlODYxOTkiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzODM0MzY1MiwiZXhwIjoxNjM4MzUwODUyfQ.7_umv9lNRZuTZPG7YNn6t8Qkohhi7W4pmSWu47niiSY
+
+### 
+
+# @name getAllHotels
+GET {{localBaseURL}}/hotels
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI5ODVkMWYzOC1kOGUzLTQ0MTUtYmEwNy01YjU0MzRjMWM3MzMiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzNjUyNDcxMywiZXhwIjoxNjM2NTMxOTEzfQ.fwQELK1r-DEp0nAZd8T8D-aqgJor4InwSz66unlhx9I
+
+### 
+
+# @name getHotelById
+GET {{localBaseURL}}/hotels/1
+Authorization: Bearer
+
+
+### 
+
+# @name getRoomOfHotel
+GET {{localBaseURL}}/hotels/1/rooms?sort=updatedAt:desc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI4NDYxZTk1OS0yYTMzLTQyNGItYTQwYy0yOGU4YTFiYjU4MDMiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzODIzNDc2NywiZXhwIjoxNjM4MjQxOTY3fQ.I-Lqu82qprou3kv22JxY0TBmSE3BbdwxT-wtns3WAq4
+
+###
+
+#  @name getHotelsOfUser
+GET {{localBaseURL}}/users/e957686f-c38b-4731-b0ca-0182ad970bdc/hotels
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlOTU3Njg2Zi1jMzhiLTQ3MzEtYjBjYS0wMTgyYWQ5NzBiZGMiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzNTkyNDQ2MywiZXhwIjoxNjM1OTMxNjYzfQ.GkmYFmmiMVmLcQY8qfePj6h_eT_zs8nW9vn2bkqpIi0
+
+
+###
+
+# @name getAllRoom
+GET {{localBaseURL}}/rooms
+
+###
+
+# @name getRoomById
+GET {{localBaseURL}}/rooms/1
+
+### 
+
+# @name deleteRoom
+# @note
+# requrie params id 
+DELETE  {{localBaseURL}}/rooms/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlYWY3ZDU0NC1kYmIyLTRmYmYtOGYxZC0wNDNjNGNhMjYxNmYiLCJ1c2VyX2VtYWlsIjoiaHV5c29uMjAyQGdtYWlsLmNvbSIsInVzZXJfaW1nIjoiL2ltYWdlcy8wYTFiNzk1ZWFiNWE1YzAwMzhlMTQ1ODg4ZTJkYmYzYSIsInVzZXJfbmFtZSI6Im5ndXllbiBkb2FuIGh1eSBzb24gMTIzIiwidXNlcl9waG9uZSI6IjA5ODU0Nzg1NDc0IiwidXNlcl9yb2xlIjoxLCJpYXQiOjE2MzUyMDk2NzQsImV4cCI6MTYzNTIxNjg3NH0.B8vARCf62fZO_s1pnkJIymP3z7T0q8qOHArh5F2GOj8
+
+{
+    "hotel_id": 1,
+}
+
+###
+
+# @name updateRoom
+# @note
+# send A form data
+# image field name: slideImgs[] is a array images
+
+PATCH {{localBaseURL}}/rooms/:id
+Authorization: Bearer
+
+### 
+
+# @name getAllUsers
+GET {{localBaseURL}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJmY2Q3NWNkMC1kNGZlLTQ2ZDktYjg5Ny1lNjY0NWE0NTZiM2EiLCJ1c2VyX2VtYWlsIjoiaHV5c29uQGdtYWlsLmNvbSIsInVzZXJfaW1nIjpudWxsLCJ1c2VyX25hbWUiOiJodXkgc29uIiwidXNlcl9waG9uZSI6IjAxNjU0ODc0NSIsInVzZXJfcm9sZSI6MCwiaWF0IjoxNjM1MTcwNDQ0LCJleHAiOjE2MzUxNzc2NDR9.77koy-e38IB_v5ildf-pgwQDmvmTiZZRVjCi8QqcmFA
+
+
+### 
+
+# @name getUserById
+GET {{localBaseURL}}/users/e957686f-c38b-4731-b0ca-0182ad970bdc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI2YzQyNzNlMC04ZjlmLTQ0NjUtYTc2MC1jMWJiYmYxNjMzYjAiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzNTc2OTkzOCwiZXhwIjoxNjM1Nzc3MTM4fQ.O0-fNZsNKwpVwgsfNcrGd__YDskMLgOp_pljCZXhW0k
+
+
+### 
+
+# @name deleteUser
+DELETE  {{localBaseURL}}/users/48e34783-2270-4eab-a0b6-89aa47946731
+Content-Type: application/json
+Authorization: Bearer
+
+###
+
+# @name createUser
+POST {{localBaseURL}}/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJmY2Q3NWNkMC1kNGZlLTQ2ZDktYjg5Ny1lNjY0NWE0NTZiM2EiLCJ1c2VyX2VtYWlsIjoiaHV5c29uQGdtYWlsLmNvbSIsInVzZXJfaW1nIjpudWxsLCJ1c2VyX25hbWUiOiJodXkgc29uIiwidXNlcl9waG9uZSI6IjAxNjU0ODc0NSIsInVzZXJfcm9sZSI6MCwiaWF0IjoxNjM0NzE0NDc4LCJleHAiOjE2MzQ3MjE2Nzh9.yd3Jsxp1vmishzhycVWNZQRFMAcOQORNzncHY5WbWcE
+
+{
+    "user_name": "oanh",
+    "user_email": "oanh@gmail.com",
+    "user_password": "123123",
+    "user_phone": "016548745",
+    "user_role": 2
+}
+
+
+###
+
+# @name updateUser
+# @note
+# send a form data
+# user image field name: avatar
+PATCH {{localBaseURL}}/users/:uuid
+Authorization: Bearer 
+
+
+### 
+
+# @name getAllStaff
+GET {{localBaseURL}}/staffs
+
+
+###
+
+# @name getStaffById
+GET {{localBaseURL}}/staffs/1
+
+###
+
+# @name getStaffOfHotel
+
+# @note 
+# only admin or hotel owner can get staff
+GET {{localBaseURL}}/hotels/1/staffs
+Authorization: Bearer
+
+###
+
+# @name getHotelOfStaff
+GET {{localBaseURL}}/staffs/3/hotels
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI5MTJiMWZmMC0wMDdjLTQ3NjItODYxZi1hMjNlNzJkZGRkMGMiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTYzNTkyNDg1NywiZXhwIjoxNjM1OTMyMDU3fQ.9m2aMv_8Jemfn8lEbvtaJF4eq8GNFfdmdKP11Jy-CUw
+### 
+
+# @name deleteStaff
+# @note
+# only owner of staff can delete staffs
+DELETE {{localBaseURL}}/staffs/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlYWY3ZDU0NC1kYmIyLTRmYmYtOGYxZC0wNDNjNGNhMjYxNmYiLCJ1c2VyX2VtYWlsIjoiaHV5c29uMjAyQGdtYWlsLmNvbSIsInVzZXJfaW1nIjoiL2ltYWdlcy8wYTFiNzk1ZWFiNWE1YzAwMzhlMTQ1ODg4ZTJkYmYzYSIsInVzZXJfbmFtZSI6Im5ndXllbiBkb2FuIGh1eSBzb24gMTIzIiwidXNlcl9waG9uZSI6IjA5ODU0Nzg1NDc0IiwidXNlcl9yb2xlIjoxLCJpYXQiOjE2MzUxNzE3NzQsImV4cCI6MTYzNTE3ODk3NH0.cUUJ8h3Xw_vRfg4s4XQPhVfcysqYcnxLvlalQ1u7Vys
+
+
+### 
+
+# @name createStaff
+POST {{hostBaseURL}}/staffs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI0NjVhYTkwNi1jM2ZjLTRmNmYtODBlYi1jYjJhZTQyZGUyOTMiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzOTQwNDY3NCwiZXhwIjoxNjM5NDExODc0fQ.HoyJXbiRWb6Fpf-db-a2bpFBbdiEav-4O9vXB9dEgRg
+
+{
+    "user_name": "staff1",
+    "user_email": "staff1@gmail.com",
+    "user_password": "123123",
+    "user_role": 2,
+    "user_phone": "061425876",
+    "staff_role": 1,
+    "hotel_id": 1
+    
+}
+
+
+###
+
+# @name updateStaff
+# @note
+# updating data is a json
+PATCH {{localBaseURL}}/staffs/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI5MTJiMWZmMC0wMDdjLTQ3NjItODYxZi1hMjNlNzJkZGRkMGMiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTYzNTkyNDg1NywiZXhwIjoxNjM1OTMyMDU3fQ.9m2aMv_8Jemfn8lEbvtaJF4eq8GNFfdmdKP11Jy-CUw
+
+
+
+### 
+
+# @name getInvoicesByUserId
+GET {{localBaseURL}}/users/eaf7d544-dbb2-4fbf-8f1d-043c4ca2616f/invoices
+Authorization: Bearer
+
+###
+
+# @name getInvoicesOfHotel
+
+# @note
+# status query ?status=
+GET {{localBaseURL}}/hotels/1/invoices?status=Dang dat coc
+
+###
+
+# @name getAllInvoices
+
+# @note
+# status query ?status=
+GET {{localBaseURL}}/invoices
+
+
+###
+
+# @name getInvoiceById
+GET {{localBaseURL}}/invoices/1
+
+### 
+
+# @name createInvoice
+POST {{hostBaseURL}}/invoices
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiI5ODVkMWYzOC1kOGUzLTQ0MTUtYmEwNy01YjU0MzRjMWM3MzMiLCJ1c2VyX3JvbGUiOjEsImlhdCI6MTYzNjA4NDg1MiwiZXhwIjoxNjM2MDkyMDUyfQ.-aD8-dFp3GbmAI8VpslG2In9w6hvzwp6jgKm-n7f7ok
+
+{
+    "price" : "120000",
+    "hotel_id": 1,
+    "r_date": "2021-10-20T12:00:00",
+    "p_date": "2021-10-21T12:00:00",
+    "room_id": 12,
+    "room_quantity": 1,
+    "status": "Dang dat coc"
+}
+
+###
+
+# @name updateInvoice
+PATCH {{localBaseURL}}/invoices/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlMzE0NDJhYi0wYWE2LTQxNjAtODU2Ni0xNzVmYmJmMTJhN2EiLCJ1c2VyX2VtYWlsIjoiaHV5c29uMjAwQGdtYWlsLmNvbSIsInVzZXJfaW1nIjpudWxsLCJ1c2VyX25hbWUiOiJodXkgc29uIiwidXNlcl9waG9uZSI6IjAxNjU0ODc0NSIsInVzZXJfcm9sZSI6MiwiaWF0IjoxNjM1MjEyMzAzLCJleHAiOjE2MzUyMTk1MDN9.Z5vCbenPAYKEByYcU1AaOCc7CtGMGHbnFVTiYw0ixyU
+
+{
+    "status": "hoan thanh",
+    "room_quantity": 3
+}
+
+###
+
+# @name deleteInvoice
+
+DELETE {{localBaseURL}}/invoices/id
+Authorization: Bearer
+### send otp
+
+POST {{localBaseURL}}/send-otp
+Content-Type: application/json
+
+{
+    "to" : "huyson201@gmail.com",
+    "channel": "email"
+}
+
+### verify otp
+post {{localBaseURL}}/verify-otp
+Content-Type: application/json
+
+{
+    "to" : "huyson201@gmail.com",
+    "code": "9806"
+}
+
+### rest password
+
+PATCH {{localBaseURL}}/reset-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlOTU3Njg2Zi1jMzhiLTQ3MzEtYjBjYS0wMTgyYWQ5NzBiZGMiLCJpYXQiOjE2MzUzMjkwMDMsImV4cCI6MTYzNTMyOTMwM30.AfHar7FeKv9m8QOAN1_8H9yXRD2eJnOQMVtbhENfEQE
+
+{
+    "new_password" : "huyson123",
+    "confirm_password": "huyson123"
+}
+
+###
+
+# @name createService
+
+POST {{localBaseURL}}/services
+Content-Type: application/json
+
+{
+    "service_name": "Nhà Hàng",
+    "service_icon": "silverware-fork-knife"
+}
+
+###
+
+# @name getAllService
+GET {{localBaseURL}}/services
+
+###
+
+# @name getServiceById
+GET {{localBaseURL}}/services/2
+Content-Type: application/json
+
+
+###
+
+# @name deleteServiceById
+DELETE {{localBaseURL}}/services/4
+Content-Type: application/json
+
+
+###
+
+# @name updateServiceById
+PATCH  {{localBaseURL}}/services/4
+Content-Type: application/json
+
+{
+    "service_name": "free all 1",
+    "service_icon": "all 1"
+}
+
+
+###
+
+# @name getAllHotelServices
+GET {{localBaseURL}}/hotel-services
+Content-Type: application/json
+
+###
+
+# @name createHotelService
+POST {{hostBaseURL}}/hotel-services
+Content-Type: application/json
+
+{
+    "hotel_id": 4,
+    "service_id": 1
+}
+
+
+###
+
+# @name updateHotelService
+PATCH  {{localBaseURL}}/hotel-services/1
+Content-Type: application/json
+
+{
+    "hotel_id": 1,
+    "service_id": 1
+}
+
+###
+
+# @name deleteHotelService
+DELETE {{localBaseURL}}/hotel-services/1
+Content-Type: application/json
+
+
+###
+
+# @name getHotelServiceById
+GET {{localBaseURL}}/hotel-services/2
+Content-Type: application/json
+
+
+###
+
+# @name getServicesOfHotel
+GET {{localBaseURL}}/hotels/1/services
+Content-Type: application/json
+
+###
+
+# @name getAllRate
+
+GET {{localBaseURL}}/rates
+
+### 
+
+# @name createRate
+
+POST {{localBaseURL}}/rates
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlOTU3Njg2Zi1jMzhiLTQ3MzEtYjBjYS0wMTgyYWQ5NzBiZGMiLCJ1c2VyX3JvbGUiOjAsImlhdCI6MTYzNzEzMTIxNCwiZXhwIjoxNjM3MTM4NDE0fQ.aENrP5t81VkXiBDf2G-rIGYlzLNZ9QK6TveoIgxaWmI
+
+{
+    "hotel_id" :1,
+    "rate_star": 4,
+    "rate_comment": "test rating function"
+}
+
+
+### 
+
+# @name updateRate
+
+PATCH  {{localBaseURL}}/rates/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlOTU3Njg2Zi1jMzhiLTQ3MzEtYjBjYS0wMTgyYWQ5NzBiZGMiLCJ1c2VyX3JvbGUiOjAsImlhdCI6MTYzNzEzMTIxNCwiZXhwIjoxNjM3MTM4NDE0fQ.aENrP5t81VkXiBDf2G-rIGYlzLNZ9QK6TveoIgxaWmI
+
+{
+    "rate_star": 3,
+    "rate_comment": "test update rating 1324 function"
+}
+
+
+### 
+
+# @name removeRate
+
+DELETE {{localBaseURL}}/rates/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3V1aWQiOiJlOTU3Njg2Zi1jMzhiLTQ3MzEtYjBjYS0wMTgyYWQ5NzBiZGMiLCJ1c2VyX3JvbGUiOjAsImlhdCI6MTYzNzEzMTIxNCwiZXhwIjoxNjM3MTM4NDE0fQ.aENrP5t81VkXiBDf2G-rIGYlzLNZ9QK6TveoIgxaWmI
+
