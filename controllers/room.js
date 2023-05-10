@@ -90,9 +90,7 @@ class RoomController {
 
             await room.destroy();
 
-            return res
-                .status(204)
-                .json({ code: 204, name: "REMOVE_ROOM", message: "successfully" });
+            return res.json({ code: 204, name: "REMOVE_ROOM", message: "successfully" });
         } catch (error) {
             console.log(error);
             return res.status(400).send(error.message);
