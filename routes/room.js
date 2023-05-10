@@ -20,7 +20,7 @@ roomRoute.post(
 roomRoute.delete(
     "/:id(\\d+$)",
     authMiddleware.checkToken,
-    authMiddleware.checkOwnerOfHotel,
+    hotelMiddleware.authCreateRoom,
     roomController.delete
 );
 roomRoute.patch(
