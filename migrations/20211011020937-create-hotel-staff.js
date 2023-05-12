@@ -29,6 +29,24 @@ module.exports = {
       role: {
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
+      birthday: {
+        type: Sequelize.DATE
+      },
+      gender: {
+        type: Sequelize.STRING
+      },
+      person_id: {
+        type: Sequelize.STRING
+      },
+      position: {
+        type: Sequelize.STRING
+      },
+      salary: {
+        type: Sequelize.DOUBLE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

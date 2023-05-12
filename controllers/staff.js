@@ -68,7 +68,7 @@ class StaffController {
     }
 
     async create(req, res) {
-        let { user_name, user_email, user_password, user_phone, staff_role, hotel_id } = req.body
+        let { user_name, user_email, user_password, user_phone, staff_role, hotel_id, name, birthday, gender, person_id, position, salary } = req.body
         const t = await sequelize.transaction()
         try {
             // kiểm tra email tồn tại
@@ -82,7 +82,7 @@ class StaffController {
 
             let user = await User.create({ user_name, user_email, user_password, user_phone, user_role: role.HOTEL_STAFF }, { transaction: t })
 
-            let staff = await HotelStaff.create({ user_uuid: user.user_uuid, hotel_id, role: staff_role }, { transaction: t })
+            let staff = await HotelStaff.create({ user_uuid: user.user_uuid, hotel_id, role: staff_role, name, birthday, gender, person_id, position, salary }, { transaction: t })
 
             await t.commit()
 

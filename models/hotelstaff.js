@@ -24,7 +24,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     user_uuid: DataTypes.STRING,
     hotel_id: DataTypes.INTEGER,
-    role: DataTypes.INTEGER
+    role: DataTypes.INTEGER,
+    name: DataTypes.STRING,
+    birthday: DataTypes.DATE,
+    gender: DataTypes.STRING,
+    person_id: DataTypes.STRING,
+    position: DataTypes.STRING,
+    salary: DataTypes.DOUBLE
   }, {
     sequelize,
     modelName: 'HotelStaff',
