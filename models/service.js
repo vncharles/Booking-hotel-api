@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     service_name: DataTypes.STRING,
-    service_icon: DataTypes.STRING
+    service_icon: DataTypes.STRING,
+    service_price: DataTypes.DOUBLE
   }, {
     sequelize,
     modelName: 'Service',

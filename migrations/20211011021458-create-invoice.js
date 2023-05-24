@@ -11,6 +11,9 @@ module.exports = {
       price: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       hotel_id: {
         type: Sequelize.INTEGER,
         references: {

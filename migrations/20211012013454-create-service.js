@@ -14,6 +14,9 @@ module.exports = {
       service_icon: {
         type: Sequelize.STRING
       },
+      service_price: {
+        type: Sequelize.DOUBLE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
